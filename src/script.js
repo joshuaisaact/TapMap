@@ -5,13 +5,7 @@ import { nanoid } from "../node_modules/nanoid/nanoid.js";
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-const form = document.querySelector('.form');
-const containerPins = document.querySelector('.pins');
-const inputType = document.querySelector('.form__input--type');
-const inputPrice = document.querySelector('.form_input--price');
-const inputFood = document.querySelector('.form_input--food');
-const inputPets = document.querySelector('.form_input--pets');
-const inputOutdoors = document.querySelector('.form_input--outdoors');
+
 
 class Tap {
   constructor(coords, price, food) {
@@ -39,6 +33,15 @@ class Brewery extends Tap {
 
 ////////////////////////////////////////
 // APPLICATION ARCHITECTURE
+
+const form = document.querySelector('.form');
+const containerPins = document.querySelector('.pins');
+const inputType = document.querySelector('.form__input--type');
+const inputPrice = document.querySelector('.form_input--price');
+const inputFood = document.querySelector('.form_input--food');
+const inputPets = document.querySelector('.form_input--pets');
+const inputOutdoors = document.querySelector('.form_input--outdoors');
+
 class App {
   #map;
   #mapEvent;
@@ -90,7 +93,21 @@ class App {
   _newTap(e) {
     e.preventDefault();
 
-    // Clear input fields
+    // Get data from form
+
+    // Check if data is valid
+
+    // If pub, create pub object
+
+    // If brewery, create brewery object
+
+    // Add new object to Tap array
+
+    // Render Tap on map as a marker
+
+    // Render Tap on list
+
+    // Hide form + Clear input fields
 
     inputPets.value = ' ';
     inputFood.value = ' ';
