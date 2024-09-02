@@ -610,14 +610,6 @@ video {
   flex-basis: 50%;
 }
 
-.basis-\[50rem\] {
-  flex-basis: 50rem;
-}
-
-.basis-\[30rem\] {
-  flex-basis: 30rem;
-}
-
 .basis-\[40rem\] {
   flex-basis: 40rem;
 }
@@ -744,15 +736,6 @@ video {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.text-\[1\.4rem\] {
-  font-size: 1.4rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .font-normal {
   font-weight: 400;
 }
@@ -787,4 +770,8 @@ video {
 .custom-popup .leaflet-popup-tip {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
+.form__row--hidden {
+  display: none;
 }

@@ -13,3 +13,7 @@
 .custom-popup .leaflet-popup-tip {
   @apply bg-gray-600;
 }
+
+.form__row--hidden {
+  display: none;
+}

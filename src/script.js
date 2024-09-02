@@ -65,3 +65,8 @@ form.addEventListener('submit', function (e) {
     .setPopupContent('Pub')
     .openPopup();
 })
+
+inputType.addEventListener('change', function () {
+  inputPets.closest('.form__row').classList.toggle('form__row--hidden');
+  inputOutdoors.closest('.form__row').classList.toggle('form__row--hidden');
+})
