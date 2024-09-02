@@ -9,43 +9,75 @@
     <script defer src="script.js"></script>
     <title>TapMap // Map your Bars</title>
   </head>
-  <body class="flex h-screen p-10 leading-relaxed">
-    <div class="sidebar flex flex-col bg-blue-300 px-20 py-16">
+  <body
+    class="flex h-screen overscroll-y-none bg-white p-10 font-sans font-normal leading-relaxed"
+  >
+    <div
+      class="sidebar flex basis-[40rem] flex-col bg-gray-600 pb-16 pl-20 pr-20 pt-12"
+    >
       <img
         src="./assets/TapMap logo.png"
         alt="logo"
         class="logo mb-16 h-24 self-center"
       />
       <ul class="pins list-none overflow-x-hidden overflow-y-scroll">
-        <form class="form hidden">
-          <div class="form__row">
-            <label class="form__label">Type</label>
-            <select class="form__input form__input --type">
+        <form
+          class="form mb-7 grid hidden h-36 grid-cols-2 gap-x-10 gap-y-2 rounded bg-slate-400 px-11 py-6"
+        >
+          <div class="form__row flex items-center">
+            <label
+              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
+              >Type</label
+            >
+            <select
+              class="form__input form__input--type text-m w-full rounded-md border-none px-4 py-1.5"
+            >
               <option value="pub">Pub</option>
               <option value="bar">Bar</option>
               <option value="brewery">Brewery</option>
             </select>
           </div>
-          <div class="form__row">
-            <label class="form__label">Price range</label>
-            <input class="form__input form_input--price" placeholder="£" />
-          </div>
-          <div class="form__row">
-            <label class="form__label">Food availability</label>
-            <input class="form__input form_input--food" placeholder="No food" />
-          </div>
-          <div class="form__row">
-            <label class="form__label">Pet friendly</label>
-            <input class="form__input form_input--pets" placeholder="No dogs" />
-          </div>
-          <div class="form__row">
-            <label class="form__label">Outdoor seating</label>
+          <!-- <div class="form__row flex items-center">
+            <label
+              class="form__label flex-shrink-0 flex-grow-0 basis-1/2 text-xl font-semibold"
+              >Price range</label
+            >
             <input
-              class="form__input form_input--outdoors"
+              class="form__input form_input--price font-inherit w-full rounded-md border-none px-4 py-1 text-[1.4rem]"
+              placeholder="£"
+            />
+          </div> -->
+          <div class="form__row flex items-center">
+            <label
+              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
+              >Food</label
+            >
+            <input
+              class="form__input form_input--food font-inherit text-m w-full rounded-md border-none px-4 py-1"
+              placeholder="No food"
+            />
+          </div>
+          <div class="form__row flex items-center">
+            <label
+              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
+              >Pet friendly</label
+            >
+            <input
+              class="form__input form_input--pets font-inherit text-m w-full rounded-md border-none px-4 py-1"
+              placeholder="No dogs"
+            />
+          </div>
+          <div class="form__row flex items-center">
+            <label
+              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
+              >Outdoor seating</label
+            >
+            <input
+              class="form__input form_input--outdoors font-inherit text-m w-full rounded-md border-none px-4 py-1"
               placeholder="No outdoor seating"
             />
           </div>
-          <button class="form__btn">OK</button>
+          <button class="form__btn hidden">OK</button>
         </form>
       </ul>
     </div>
