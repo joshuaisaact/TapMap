@@ -1,12 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mappd</title>
-  <link href="./output.css" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
+    <script defer src="../node_modules/leaflet/dist/leaflet.js"></script>
+    <script defer src="script.js"></script>
+    <title>TapMap // Map your Bars</title>
+  </head>
+  <body class="flex h-screen p-10 leading-relaxed">
+    <div class="sidebar flex flex-col bg-blue-300 px-20 py-16">
+      <img
+        src="./assets/TapMap logo.png"
+        alt="logo"
+        class="logo mb-16 h-24 self-center"
+      />
+      <ul class="pins list-none overflow-x-hidden overflow-y-scroll">
+        <form class="form hidden">
+          <div class="form__row">
+            <label class="form__label">Type</label>
+            <select class="form__input form__input --type">
+              <option value="pub">Pub</option>
+              <option value="bar">Bar</option>
+              <option value="brewery">Brewery</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label class="form__label">Price range</label>
+            <input class="form__input form_input--price" placeholder="£" />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Food availability</label>
+            <input class="form__input form_input--food" placeholder="No food" />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Pet friendly</label>
+            <input class="form__input form_input--pets" placeholder="No dogs" />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Outdoor seating</label>
+            <input
+              class="form__input form_input--outdoors"
+              placeholder="No outdoor seating"
+            />
+          </div>
+          <button class="form__btn">OK</button>
+        </form>
+      </ul>
+    </div>
 
-</body>
+    <div id="map" class="h-full flex-1 bg-gray-300"></div>
+  </body>
 </html>
