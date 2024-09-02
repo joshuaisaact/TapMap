@@ -1,4 +1,6 @@
 'use strict';
+// Lightweight library for generating unique IDs
+import { nanoid } from "../node_modules/nanoid/nanoid.js";
 
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -11,8 +13,32 @@ const inputFood = document.querySelector('.form_input--food');
 const inputPets = document.querySelector('.form_input--pets');
 const inputOutdoors = document.querySelector('.form_input--outdoors');
 
-// let map, mapEvent;
+class Tap {
+  constructor(coords, price, food) {
+    this.id = nanoid(); // Generate unique ID
+    this.coords = coords;
+    this.price = price;
+    this.food = food;
+  }
+}
 
+class Pub extends Tap {
+  constructor(coords, price, food, pets) {
+    super(coords, price, food);
+    this.pets = pets;
+  }
+}
+class Brewery extends Tap {
+  constructor(coords, price, food, outdoors) {
+    super(coords, price, food);
+    this.outdoors = outdoors;
+  }
+}
+
+
+
+////////////////////////////////////////
+// APPLICATION ARCHITECTURE
 class App {
   #map;
   #mapEvent;
