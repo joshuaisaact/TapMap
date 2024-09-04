@@ -246,6 +246,16 @@ class App {
     });
   }
 
+  getTaps() {
+    return this.#taps;
+  }
+
+  // Public method to clear taps (for testing)
+  clearTaps() {
+    this.#taps = [];
+    this.clear();
+  }
+
   clear() {
     localStorage.removeItem('taps');
   }

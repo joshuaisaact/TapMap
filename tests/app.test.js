@@ -57,6 +57,7 @@ beforeEach(() => {
     },
   });
 
+
   const app = new App();
 
   // Manually trigger the setting of #mapEvent (since no real map click happens in tests)
