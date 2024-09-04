@@ -63,6 +63,10 @@ class App {
     if (containerPins) containerPins.addEventListener('click', this._moveToPopup.bind(this));
   }
 
+  _setMapEvent(latlng) { // For testing purposes
+    this.#mapEvent = { latlng };
+  }
+
   _getPosition() {
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
@@ -208,7 +212,7 @@ class App {
       </li>
     `;
 
-    form.insertAdjacentHTML('afterend', html);
+    containerPins.insertAdjacentHTML('beforeend', html);
   }
 
   _moveToPopup(e) {

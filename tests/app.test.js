@@ -4,14 +4,27 @@ import { App, Pub, Brewery } from '../src/script.js';  // Assuming the path is c
 beforeEach(() => {
   // Set up basic HTML structure
   document.body.innerHTML = `
-    <form class="form"></form>
-    <div class="pins"></div>
-    <input class="form__input--name" />
-    <select class="form__input--type"></select>
-    <select class="form_input--price"></select>
-    <input class="form_input--food" />
-    <input class="form_input--pets" />
-    <input class="form_input--outdoors" />
+  <div id="map"></div>
+  <div class="sidebar">
+    <ul class="pins">
+      <form class="form">
+        <input class="form__input--name" />
+        <select class="form__input--type">
+          <option value="pub">Pub</option>
+          <option value="brewery">Brewery</option>
+        </select>
+        <select class="form_input--price">
+          <option value="Budget">Budget</option>
+          <option value="Medium">Medium</option>
+          <option value="Expensive">Expensive</option>
+        </select>
+        <input class="form_input--food" type="checkbox" />
+        <input class="form_input--pets" type="checkbox" />
+        <input class="form_input--outdoors" type="checkbox" />
+        <button type="submit" class="form__btn">Submit</button>
+      </form>
+    </ul>
+  </div>
   `;
 
   global.L = {
@@ -44,6 +57,11 @@ beforeEach(() => {
     },
   });
 
+  const app = new App();
+
+  // Manually trigger the setting of #mapEvent (since no real map click happens in tests)
+  app._setMapEvent(51.5074, -0.1278)
+
 });
 
 describe('Tap Classes', () => {
@@ -69,3 +87,4 @@ describe('Tap Classes', () => {
     expect(brewery.outdoors).toBe(true);
   });
 });
+
