@@ -49,13 +49,13 @@ const inputOutdoors = document.querySelector('.form_input--outdoors');
 class App {
   #map;
   #mapEvent;
+  #mapZoomLevel = 14;
   #taps = [];
   constructor() {
     this._getPosition();
-
     form.addEventListener('submit', this._newTap.bind(this));
-
     inputType.addEventListener('change', this._toggleOutdoor);
+    containerPins.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -74,7 +74,7 @@ class App {
 
     const coords = [latitude, longitude];
 
-    this.#map = L.map('map').setView(coords, 14);
+    this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
     L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -173,7 +173,7 @@ class App {
           </div>
           <div class="tap__details">
             <span class="tap__icon">🍔</span>
-            <span class="tap__value">${tap.food}</span>
+            <span class="tap__value">${tap.food ? '✔️' : '❌'}</span>
           </div>
 
     `;
@@ -182,7 +182,7 @@ class App {
       html += `
           <div class="tap__details">
             <span class="tap__icon">🐕</span>
-            <span class="workout__value">${tap.pets}</span>
+            <span class="workout__value">${tap.pets ? '✔️' : '❌'}</span>
           </div>
         </li>
       `;
@@ -191,12 +191,30 @@ class App {
       html += `
         <div class="tap__details">
             <span class="tap__icon">🪑</span>
-            <span class="tap__value">${tap.outdoors}</span>
+            <span class="tap__value">${tap.outdoors ? '✔️' : '❌'}</span>
         </div>
       </li>
     `;
 
     form.insertAdjacentHTML('afterend', html);
+  }
+
+  _moveToPopup(e) {
+    const tapEl = e.target.closest('.tap');
+    console.log(tapEl);
+
+    if (!tapEl) return;
+
+    const tap = this.#taps.find(tap => tap.id === tapEl.dataset.id);
+
+    console.log(tap);
+
+    this.#map.setView(tap.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1
+      }
+    })
   }
 }
 
