@@ -24,7 +24,6 @@
 
 ```plaintext
 📁 TapMap
-├── 📁 node_modules      # Node.js packages
 ├── 📁 docs              # Project directory
 │   ├── script.js        # Main JavaScript file for app logic
 │   ├── index.html       # HTML file
