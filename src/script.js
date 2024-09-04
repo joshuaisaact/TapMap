@@ -58,9 +58,9 @@ class App {
     this._getLocalStorage();
 
     // Attach event handlers
-    form.addEventListener('submit', this._newTap.bind(this));
-    inputType.addEventListener('change', this._toggleOutdoor);
-    containerPins.addEventListener('click', this._moveToPopup.bind(this));
+    if (form) form.addEventListener('submit', this._newTap.bind(this));
+    if (inputType) inputType.addEventListener('change', this._toggleOutdoor.bind(this));
+    if (containerPins) containerPins.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -247,4 +247,7 @@ class App {
   }
 }
 
-new App();
+const app = new App();
+
+
+export { App, Pub, Brewery };
