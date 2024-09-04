@@ -38,7 +38,7 @@ class Brewery extends Tap {
 
 const form = document.querySelector('.form');
 const containerPins = document.querySelector('.pins');
-const inputName = document.querySelector('.form__input--name')
+const inputName = document.querySelector('.form__input--name');
 const inputType = document.querySelector('.form__input--type');
 const inputPrice = document.querySelector('.form_input--price');
 const inputFood = document.querySelector('.form_input--food');
@@ -51,7 +51,13 @@ class App {
   #mapZoomLevel = 14;
   #taps = [];
   constructor() {
+    // Get user's position
     this._getPosition();
+
+    // Get data from local storage
+    this._getLocalStorage();
+
+    // Attach event handlers
     form.addEventListener('submit', this._newTap.bind(this));
     inputType.addEventListener('change', this._toggleOutdoor);
     containerPins.addEventListener('click', this._moveToPopup.bind(this));
@@ -81,6 +87,10 @@ class App {
     }).addTo(this.#map);
 
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#taps.forEach(tap => {
+      this._renderTapMarker(tap);
+    })
   }
 
   _showForm(mapEvent) {
@@ -93,7 +103,7 @@ class App {
     inputFood.checked = false;
     inputOutdoors.checked = false;
     inputName.value = '';
-    form.classList.add('hidden')
+    form.classList.add('hidden');
   }
 
   _toggleOutdoor() {
@@ -130,20 +140,20 @@ class App {
 
     // Add new object to Tap array
     this.#taps.push(tap);
-    console.log(tap);
 
     // Render Tap on map as a marker
     this._renderTapMarker(tap);
 
     // Render Tap on list
 
-    this._renderTap(tap)
+    this._renderTap(tap);
 
     // Hide form + Clear input fields
 
-    this._hideForm()
+    this._hideForm();
 
-    // Display Marker
+    // Set local storage to all taps
+    this._setLocalStorage();
   }
   _renderTapMarker(tap) {
     L.marker(tap.coords)
@@ -163,9 +173,9 @@ class App {
 
   _renderTap(tap) {
     const priceEmojis = {
-      'Budget': '💵',
-      'Medium': '💵💵',
-      'Expensive': '💵💵💵'
+      Budget: '💵',
+      Medium: '💵💵',
+      Expensive: '💵💵💵',
     };
     let html = `
     <li class="tap tap--${tap.type} bg-slate-300 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
@@ -203,19 +213,33 @@ class App {
 
   _moveToPopup(e) {
     const tapEl = e.target.closest('.tap');
-    console.log(tapEl);
 
     if (!tapEl) return;
 
-    const tap = this.#taps.find(tap => tap.id === tapEl.dataset.id);
+    const tap = this.#taps.find((tap) => tap.id === tapEl.dataset.id);
 
-    console.log(tap);
 
     this.#map.setView(tap.coords, this.#mapZoomLevel, {
       animate: true,
       pan: {
-        duration: 1
-      }
+        duration: 1,
+      },
+    });
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('taps', JSON.stringify(this.#taps));
+  }
+
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('taps'));
+
+    if (!data) return;
+
+    this.#taps = data;
+
+    this.#taps.forEach(tap => {
+      this._renderTap(tap);
     })
   }
 }

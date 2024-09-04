@@ -36,42 +36,20 @@
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 3rem;
-  height: 1.5rem;
+  @apply relative inline-block h-6 w-12;
 }
 
-/* Hide the checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  @apply h-0 w-0 opacity-0;
 }
 
-/* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 9999px;
+  @apply duration-400 absolute inset-0 cursor-pointer rounded-full bg-gray-300 transition-all;
 }
 
 .slider:before {
-  position: absolute;
   content: '';
-  height: 1.25rem;
-  width: 1.25rem;
-  left: 0.125rem;
-  bottom: 0.125rem;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
+  @apply duration-400 absolute bottom-0.5 left-0.5 h-5 w-5 rounded-full bg-white transition-all;
 }
 
 input:checked + .slider {
