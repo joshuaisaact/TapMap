@@ -1,6 +1,6 @@
 'use strict';
 // Lightweight library for generating unique IDs
-import { nanoid } from '../node_modules/nanoid/nanoid.js';
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid@5.0.7/nanoid.js';
 
 class Tap {
   constructor(name, coords, price, food) {
