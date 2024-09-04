@@ -35,7 +35,7 @@
 ├── 📄 package.json      # Project dependencies and scripts
 ├── 📄 tailwind.config.js# Tailwind configuration
 ├── 📄 README.md         # Project documentation
-└── 📄 vite.config.js    # Vite configuration file for running and building the app
+└── 📄 vitest.config.js  # Vitest configuration file for running tests
 ```
 
 ## How to Run the Project
