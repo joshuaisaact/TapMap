@@ -2,6 +2,7 @@
   "name": "tapmap",
   "version": "1.0.0",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",

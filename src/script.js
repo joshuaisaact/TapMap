@@ -88,9 +88,9 @@ class App {
 
     this.#map.on('click', this._showForm.bind(this));
 
-    this.#taps.forEach(tap => {
+    this.#taps.forEach((tap) => {
       this._renderTapMarker(tap);
-    })
+    });
   }
 
   _showForm(mapEvent) {
@@ -218,7 +218,6 @@ class App {
 
     const tap = this.#taps.find((tap) => tap.id === tapEl.dataset.id);
 
-
     this.#map.setView(tap.coords, this.#mapZoomLevel, {
       animate: true,
       pan: {
@@ -238,10 +237,14 @@ class App {
 
     this.#taps = data;
 
-    this.#taps.forEach(tap => {
+    this.#taps.forEach((tap) => {
       this._renderTap(tap);
-    })
+    });
+  }
+
+  clear() {
+    localStorage.removeItem('taps');
   }
 }
 
-const app = new App();
+new App();
