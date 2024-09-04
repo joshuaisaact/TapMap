@@ -92,6 +92,7 @@ class App {
     inputPets.checked = false; // Clear input fields (checkboxes)
     inputFood.checked = false;
     inputOutdoors.checked = false;
+    inputName.value = '';
     form.classList.add('hidden')
   }
 
