@@ -1,6 +1,6 @@
 <h1>TapMap // Map your Bars</h1>
 
-**TapMap** is a simple web application designed to allow users to mark and track pubs and breweries on a map. This project was built using **Leaflet.js** for mapping, **Tailwind CSS** for styling, and **Vitest** for testing. The main purpose of this project is to enhance familiarity with Leaflet for interactive maps, Tailwind for responsive design, and writing basic unit tests using Vitest.
+**TapMap** is a simple web application designed to allow users to mark and track pubs and breweries on a map. This project was built using **Leaflet.js** for mapping, **Tailwind CSS** for styling, and **Vitest** for testing. The main purpose of this project is to enhance my familiarity with Leaflet for interactive maps, Tailwind for responsive design, and writing basic unit tests using Vitest.
 
 ## Features
 
