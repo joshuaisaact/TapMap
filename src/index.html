@@ -10,24 +10,27 @@
     <title>TapMap // Map your Bars</title>
   </head>
   <body
-    class="flex h-screen overscroll-y-none bg-white p-10 font-sans font-normal leading-relaxed"
+    class="flex h-screen flex-col bg-white font-sans font-normal leading-relaxed md:flex-row md:overscroll-y-none md:p-2"
   >
-    <div id="map" class="h-full flex-1 bg-gray-300"></div>
+    <!-- Map Section -->
+    <div id="map" class="h-1/2 w-full bg-gray-300 md:h-full"></div>
+
+    <!-- Sidebar Section -->
     <div
-      class="sidebar flex basis-[40rem] flex-col bg-gray-200 pb-16 pl-20 pr-20 pt-12"
+      class="sidebar flex h-1/2 w-full flex-col bg-gray-200 p-4 md:h-full md:w-1/2 md:pb-16 md:pl-20 md:pr-20 md:pt-12"
     >
       <img
-        src="./assets/TapMap logo.png"
+        src="./assets/Tap Map.png"
         alt="logo"
-        class="logo mb-16 h-24 self-center"
+        class="logo h-24 self-center md:mb-16"
       />
       <ul class="pins h-auto list-none overflow-x-hidden">
         <form
-          class="form mb-7 grid hidden h-60 grid-cols-2 gap-x-10 gap-y-2 rounded bg-slate-300 px-11 py-6"
+          class="form md:text-m mb-7 grid hidden h-60 grid-cols-2 gap-x-10 gap-y-2 rounded bg-slate-300 px-3 py-6 text-sm md:px-11"
         >
           <div class="form__row col-span-2 flex items-center">
             <label
-              class="form__label text-m mr-4 w-auto pr-7 font-semibold text-gray-700"
+              class="form__label md:text-m mr-4 w-auto pr-7 text-sm font-semibold text-gray-700"
               >Name</label
             >
             <input
@@ -55,7 +58,7 @@
               >Price</label
             >
             <select
-              class="form__input form_input--price font-inherit text-m w-full rounded-md border-none py-1"
+              class="form__input form_input--price font-inherit md:text-m w-full rounded-md border-none py-1"
               placeholder="£"
             >
               <option value="Budget">Budget</option>
@@ -80,7 +83,7 @@
 
           <div class="form__row flex items-center justify-between">
             <label
-              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold text-gray-700"
+              class="form__label md:text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold text-gray-700"
             >
               Dog friendly
             </label>

@@ -44,12 +44,12 @@
 }
 
 .slider {
-  @apply duration-400 absolute inset-0 cursor-pointer rounded-full bg-gray-300 transition-all;
+  @apply absolute inset-0 cursor-pointer rounded-full bg-gray-600 transition-all;
 }
 
 .slider:before {
   content: '';
-  @apply duration-400 absolute bottom-0.5 left-0.5 h-5 w-5 rounded-full bg-white transition-all;
+  @apply absolute bottom-0.5 left-0.5 h-5 w-5 rounded-full bg-white transition-all;
 }
 
 input:checked + .slider {
