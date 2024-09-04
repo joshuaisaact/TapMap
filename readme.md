@@ -40,6 +40,8 @@
 
 ## How to Run the Project
 
+You can see the project live via GitHub pages at: https://joshuaisaact.github.io/TapMap/
+
 ### 1. Clone the repository:
 
 ```bash
@@ -53,23 +55,7 @@ cd TapMap
 npm install
 ```
 
-### 3. Start the Development Server:
-
-```bash
-npm run dev
-```
-
-This will start the Vite development server. Open your browser and navigate to `http://localhost:3000` to see the app in action.
-
-### 4. Build for Production:
-
-```bash
-npm run build
-```
-
-This command builds the project for production and outputs the static files in the `dist/` folder.
-
-### 5. Run Unit Tests:
+### 3.  Run Unit Tests:
 
 ```bash
 npm run test
