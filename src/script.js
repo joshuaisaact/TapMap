@@ -1,11 +1,9 @@
 'use strict';
 // Lightweight library for generating unique IDs
-import { nanoid } from "../node_modules/nanoid/nanoid.js";
+import { nanoid } from '../node_modules/nanoid/nanoid.js';
 
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-
 
 class Tap {
   constructor(coords, price, food) {
@@ -14,24 +12,28 @@ class Tap {
     this.price = price;
     this.food = food;
   }
+
+  _setDescription() {
+    this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)}`;
+  }
 }
 
 class Pub extends Tap {
-  type = 'Pub';
+  type = 'pub';
   constructor(coords, price, food, pets) {
     super(coords, price, food);
     this.pets = pets;
+    this._setDescription();
   }
 }
 class Brewery extends Tap {
-  type = 'Brewery';
+  type = 'brewery';
   constructor(coords, price, food, outdoors) {
     super(coords, price, food);
     this.outdoors = outdoors;
+    this._setDescription();
   }
 }
-
-
 
 ////////////////////////////////////////
 // APPLICATION ARCHITECTURE
@@ -88,6 +90,15 @@ class App {
     inputFood.focus();
   }
 
+  _hideForm() {
+    inputPets.value = ' ';
+    inputFood.value = ' ';
+    inputOutdoors.value = ' ';
+    form.style.display = 'none'
+    form.classList.add('hidden')
+    setTimeout(() => form.style.display = 'grid', 1000)
+  }
+
   _toggleOutdoor() {
     inputPets.closest('.form__row').classList.toggle('form__row--hidden');
     inputOutdoors.closest('.form__row').classList.toggle('form__row--hidden');
@@ -110,8 +121,7 @@ class App {
       const pets = inputPets.checked;
       // if (pets !== INSERTOPTIONSFORPETSHERE) return alert('Input is invalid!')
 
-      tap = new Pub([lat, lng], price, food, pets)
-
+      tap = new Pub([lat, lng], price, food, pets);
     }
 
     // If brewery, create brewery object
@@ -120,25 +130,22 @@ class App {
       tap = new Brewery([lat, lng], price, food, outdoors);
     }
 
-
-
     // Add new object to Tap array
     this.#taps.push(tap);
     console.log(tap);
 
     // Render Tap on map as a marker
-    this._renderTapMarker(tap)
+    this._renderTapMarker(tap);
 
     // Render Tap on list
 
+    this._renderTap(tap)
+
     // Hide form + Clear input fields
 
-    inputPets.value = ' ';
-    inputFood.value = ' ';
-    inputOutdoors.value = ' ';
+    this._hideForm()
 
     // Display Marker
-
   }
   _renderTapMarker(tap) {
     L.marker(tap.coords)
@@ -152,12 +159,44 @@ class App {
           className: `${tap.type}-popup`,
         }),
       )
-      .setPopupContent(tap.type)
+      .setPopupContent(`🍺 ${tap.description}`)
       .openPopup();
   }
 
   _renderTap(tap) {
+    let html = `
+    <li class="tap tap--${tap.type} bg-slate-400 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
+          <h2 class="text-[1.7rem] font-semibold col-span-full">${tap.description}</h2>
+          <div class="tap__details">
+            <span class="tap__icon">💵</span>
+            <span class="tap__value">${tap.price}</span>
+          </div>
+          <div class="tap__details">
+            <span class="tap__icon">🍔</span>
+            <span class="tap__value">${tap.food}</span>
+          </div>
 
+    `;
+
+    if (tap.type === 'pub')
+      html += `
+          <div class="tap__details">
+            <span class="tap__icon">🐕</span>
+            <span class="workout__value">${tap.pets}</span>
+          </div>
+        </li>
+      `;
+
+    if (tap.type === 'brewery')
+      html += `
+        <div class="tap__details">
+            <span class="tap__icon">🪑</span>
+            <span class="tap__value">${tap.outdoors}</span>
+        </div>
+      </li>
+    `;
+
+    form.insertAdjacentHTML('afterend', html);
   }
 }
 

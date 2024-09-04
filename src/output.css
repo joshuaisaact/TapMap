@@ -554,6 +554,10 @@ video {
   --tw-contain-style:  ;
 }
 
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -614,12 +618,20 @@ video {
   flex-basis: 40rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .list-none {
   list-style-type: none;
 }
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -635,8 +647,17 @@ video {
        column-gap: 2.5rem;
 }
 
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+}
+
 .gap-y-2 {
   row-gap: 0.5rem;
+}
+
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 
 .self-center {
@@ -691,6 +712,10 @@ video {
   padding: 2.5rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .px-11 {
   padding-left: 2.75rem;
   padding-right: 2.75rem;
@@ -736,6 +761,10 @@ video {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.text-\[1\.7rem\] {
+  font-size: 1.7rem;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -752,7 +781,7 @@ video {
   font-size: 62.5%;
 } */
 
-.Pub-popup .leaflet-popup-content-wrapper {
+.pub-popup .leaflet-popup-content-wrapper {
   border-radius: 0.25rem;
   border-left-width: 4px;
   border-style: solid;
@@ -767,13 +796,13 @@ video {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
-.Pub-popup,
-.Brewery-popup .leaflet-popup-tip {
+.pub-popup,
+.brewery-popup .leaflet-popup-tip {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
-.Brewery-popup .leaflet-popup-content-wrapper {
+.brewery-popup .leaflet-popup-content-wrapper {
   border-radius: 0.25rem;
   border-left-width: 4px;
   border-style: solid;
@@ -788,11 +817,23 @@ video {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
-.Pub-popup .leaflet-popup-tip {
+.pub-popup .leaflet-popup-tip {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
 .form__row--hidden {
   display: none;
+}
+
+.tap--pub {
+  border-left-width: 5px;
+  --tw-border-opacity: 1;
+  border-color: rgb(22 101 52 / var(--tw-border-opacity));
+}
+
+.tap--brewery {
+  border-left-width: 5px;
+  --tw-border-opacity: 1;
+  border-color: rgb(153 27 27 / var(--tw-border-opacity));
 }
