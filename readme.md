@@ -25,7 +25,7 @@
 ```plaintext
 📁 TapMap
 ├── 📁 node_modules      # Node.js packages
-├── 📁 src               # Source directory
+├── 📁 docs              # Project directory
 │   ├── script.js        # Main JavaScript file for app logic
 │   ├── index.html       # HTML file
 │   ├── input.css        # Tailwind CSS Input file
@@ -55,7 +55,7 @@ cd TapMap
 npm install
 ```
 
-### 3.  Run Unit Tests:
+### 3. Run Unit Tests:
 
 ```bash
 npm run test
