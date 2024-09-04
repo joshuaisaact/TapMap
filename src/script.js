@@ -3,8 +3,9 @@
 import { nanoid } from '../node_modules/nanoid/nanoid.js';
 
 class Tap {
-  constructor(coords, price, food) {
+  constructor(name, coords, price, food) {
     this.id = nanoid(); // Generate unique ID
+    this.name = name;
     this.coords = coords;
     this.price = price;
     this.food = food;
@@ -17,16 +18,16 @@ class Tap {
 
 class Pub extends Tap {
   type = 'pub';
-  constructor(coords, price, food, pets) {
-    super(coords, price, food);
+  constructor(name, coords, price, food, pets) {
+    super(name, coords, price, food);
     this.pets = pets;
     this._setDescription();
   }
 }
 class Brewery extends Tap {
   type = 'brewery';
-  constructor(coords, price, food, outdoors) {
-    super(coords, price, food);
+  constructor(name, coords, price, food, outdoors) {
+    super(name, coords, price, food);
     this.outdoors = outdoors;
     this._setDescription();
   }
@@ -37,6 +38,7 @@ class Brewery extends Tap {
 
 const form = document.querySelector('.form');
 const containerPins = document.querySelector('.pins');
+const inputName = document.querySelector('.form__input--name')
 const inputType = document.querySelector('.form__input--type');
 const inputPrice = document.querySelector('.form_input--price');
 const inputFood = document.querySelector('.form_input--food');
@@ -102,6 +104,7 @@ class App {
     e.preventDefault();
 
     // Get data from form
+    const name = inputName.value;
     const type = inputType.value;
     const price = inputPrice.value;
     const food = inputFood.checked;
@@ -115,13 +118,13 @@ class App {
       const pets = inputPets.checked;
       // if (pets !== INSERTOPTIONSFORPETSHERE) return alert('Input is invalid!')
 
-      tap = new Pub([lat, lng], price, food, pets);
+      tap = new Pub(name, [lat, lng], price, food, pets);
     }
 
     // If brewery, create brewery object
     if (type === 'brewery') {
       const outdoors = inputOutdoors.checked;
-      tap = new Brewery([lat, lng], price, food, outdoors);
+      tap = new Brewery(name, [lat, lng], price, food, outdoors);
     }
 
     // Add new object to Tap array
@@ -153,7 +156,7 @@ class App {
           className: `${tap.type}-popup`,
         }),
       )
-      .setPopupContent(`🍺 ${tap.description}`)
+      .setPopupContent(`🍺 ${tap.name}`)
       .openPopup();
   }
 
@@ -165,7 +168,7 @@ class App {
     };
     let html = `
     <li class="tap tap--${tap.type} bg-slate-300 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
-          <h2 class="text-[1.7rem] col-span-full text-gray-700">${tap.description}</h2>
+          <h2 class="text-[1.7rem] col-span-full text-gray-700">${tap.name}</h2>
           <div class="tap__details">
             <span class="tap__value">${priceEmojis[tap.price]}</span>
           </div>
