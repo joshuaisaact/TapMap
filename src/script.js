@@ -164,8 +164,8 @@ class App {
       'Expensive': '💵💵💵'
     };
     let html = `
-    <li class="tap tap--${tap.type} bg-slate-400 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
-          <h2 class="text-[1.7rem] font-semibold col-span-full text-gray-700">${tap.description}</h2>
+    <li class="tap tap--${tap.type} bg-slate-300 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
+          <h2 class="text-[1.7rem] col-span-full text-gray-700">${tap.description}</h2>
           <div class="tap__details">
             <span class="tap__value">${priceEmojis[tap.price]}</span>
           </div>

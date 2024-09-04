@@ -7,20 +7,20 @@
 } */
 
 .pub-popup .leaflet-popup-content-wrapper {
-  @apply rounded border-l-4 border-solid border-green-600 bg-slate-400 pl-2 text-2xl text-gray-700;
+  @apply rounded border-l-4 border-solid border-green-600 bg-slate-300 pl-2 text-2xl text-gray-700;
 }
 
 .pub-popup,
 .brewery-popup .leaflet-popup-tip {
-  @apply bg-slate-400;
+  @apply bg-slate-300;
 }
 
 .brewery-popup .leaflet-popup-content-wrapper {
-  @apply rounded border-l-4 border-solid border-red-600 bg-slate-400 pl-2 text-2xl text-gray-700;
+  @apply rounded border-l-4 border-solid border-red-600 bg-slate-300 pl-2 text-2xl text-gray-700;
 }
 
 .pub-popup .leaflet-popup-tip {
-  @apply bg-slate-400;
+  @apply bg-slate-300;
 }
 
 .form__row--hidden {
@@ -75,7 +75,7 @@
 }
 
 input:checked + .slider {
-  background-color: lightgreen;
+  @apply bg-green-400;
 }
 
 input:checked + .slider:before {
