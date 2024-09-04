@@ -2,9 +2,6 @@
 // Lightweight library for generating unique IDs
 import { nanoid } from '../node_modules/nanoid/nanoid.js';
 
-// prettier-ignore
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 class Tap {
   constructor(coords, price, food) {
     this.id = nanoid(); // Generate unique ID
@@ -87,16 +84,13 @@ class App {
   _showForm(mapEvent) {
     this.#mapEvent = mapEvent;
     form.classList.remove('hidden');
-    inputFood.focus();
   }
 
   _hideForm() {
-    inputPets.value = ' ';
-    inputFood.value = ' ';
-    inputOutdoors.value = ' ';
-    form.style.display = 'none'
+    inputPets.checked = false; // Clear input fields (checkboxes)
+    inputFood.checked = false;
+    inputOutdoors.checked = false;
     form.classList.add('hidden')
-    setTimeout(() => form.style.display = 'grid', 1000)
   }
 
   _toggleOutdoor() {
@@ -164,12 +158,16 @@ class App {
   }
 
   _renderTap(tap) {
+    const priceEmojis = {
+      'Budget': '💵',
+      'Medium': '💵💵',
+      'Expensive': '💵💵💵'
+    };
     let html = `
     <li class="tap tap--${tap.type} bg-slate-400 ounded-md p-6 mb-7 cursor-pointer grid grid-cols-4 gap-x-6 gap-y-3" data-id="${tap.id}" >
-          <h2 class="text-[1.7rem] font-semibold col-span-full">${tap.description}</h2>
+          <h2 class="text-[1.7rem] font-semibold col-span-full text-gray-700">${tap.description}</h2>
           <div class="tap__details">
-            <span class="tap__icon">💵</span>
-            <span class="tap__value">${tap.price}</span>
+            <span class="tap__value">${priceEmojis[tap.price]}</span>
           </div>
           <div class="tap__details">
             <span class="tap__icon">🍔</span>

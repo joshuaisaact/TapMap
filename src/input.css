@@ -7,20 +7,20 @@
 } */
 
 .pub-popup .leaflet-popup-content-wrapper {
-  @apply rounded border-l-4 border-solid border-green-800 bg-gray-600 pl-2 text-2xl text-gray-200;
+  @apply rounded border-l-4 border-solid border-green-600 bg-slate-400 pl-2 text-2xl text-gray-700;
 }
 
 .pub-popup,
 .brewery-popup .leaflet-popup-tip {
-  @apply bg-gray-600;
+  @apply bg-slate-400;
 }
 
 .brewery-popup .leaflet-popup-content-wrapper {
-  @apply rounded border-l-4 border-solid border-red-800 bg-gray-600 pl-2 text-2xl text-gray-200;
+  @apply rounded border-l-4 border-solid border-red-600 bg-slate-400 pl-2 text-2xl text-gray-700;
 }
 
 .pub-popup .leaflet-popup-tip {
-  @apply bg-gray-600;
+  @apply bg-slate-400;
 }
 
 .form__row--hidden {
@@ -28,9 +28,56 @@
 }
 
 .tap--pub {
-  @apply border-l-[5px] border-green-800;
+  @apply border-l-[5px] border-green-600;
 }
 
 .tap--brewery {
-  @apply border-l-[5px] border-red-800;
+  @apply border-l-[5px] border-red-600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+}
+
+/* Hide the checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 9999px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 1.25rem;
+  width: 1.25rem;
+  left: 0.125rem;
+  bottom: 0.125rem;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: lightgreen;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.5rem);
 }

@@ -14,24 +14,24 @@
   >
     <div id="map" class="h-full flex-1 bg-gray-300"></div>
     <div
-      class="sidebar flex basis-[40rem] flex-col bg-gray-600 pb-16 pl-20 pr-20 pt-12"
+      class="sidebar flex basis-[40rem] flex-col bg-gray-200 pb-16 pl-20 pr-20 pt-12"
     >
       <img
         src="./assets/TapMap logo.png"
         alt="logo"
         class="logo mb-16 h-24 self-center"
       />
-      <ul class="pins list-none overflow-x-hidden overflow-y-scroll">
+      <ul class="pins h-auto list-none overflow-x-hidden">
         <form
-          class="form mb-7 grid hidden h-36 grid-cols-2 gap-x-10 gap-y-2 rounded bg-slate-400 px-11 py-6"
+          class="form mb-7 grid hidden h-44 grid-cols-2 gap-x-10 gap-y-2 rounded bg-slate-400 px-11 py-6"
         >
           <div class="form__row flex items-center">
             <label
-              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
+              class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold text-gray-700"
               >Type</label
             >
             <select
-              class="form__input form__input--type text-m w-full rounded-md border-none px-4 py-1.5"
+              class="form__input form__input--type text-m w-full rounded-md border-none py-1.5"
             >
               <option value="pub">Pub</option>
               <option value="brewery">Brewery</option>
@@ -40,10 +40,10 @@
           <div class="form__row flex items-center">
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Price range</label
+              >Price</label
             >
             <select
-              class="form__input form_input--price font-inherit text-m w-full rounded-md border-none px-4 py-1"
+              class="form__input form_input--price font-inherit text-m w-full rounded-md border-none py-1"
               placeholder="£"
             >
               <option value="Budget">Budget</option>
@@ -51,38 +51,56 @@
               <option value="Expensive">Expensive</option>
             </select>
           </div>
-          <div class="form__row flex items-center">
+          <div class="form__row flex items-center justify-between">
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Food</label
             >
-            <input
-              type="checkbox"
-              class="form__input form_input--food font-inherit text-m w-full rounded-md border-none px-4 py-1"
-              placeholder="No food"
-            />
+              Food
+            </label>
+            <label class="switch">
+              <input
+                type="checkbox"
+                class="form__input form_input--food hidden"
+              />
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="form__row flex items-center">
+
+          <div class="form__row flex items-center justify-between">
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Dog friendly</label
             >
-            <input
-              type="checkbox"
-              class="form__input form_input--pets font-inherit text-m w-full rounded-md border-none px-4 py-1"
-            />
+              Dog friendly
+            </label>
+            <label class="switch">
+              <input
+                type="checkbox"
+                class="form__input form_input--pets hidden"
+              />
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="form__row form__row--hidden flex items-center">
+          <div
+            class="form__row form__row--hidden flex items-center justify-between"
+          >
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Outdoor Seats</label
             >
-            <input
-              type="checkbox"
-              class="form__input form_input--outdoors font-inherit text-m w-full rounded-md border-none px-4 py-1"
-            />
+              Outdoor Seats
+            </label>
+            <label class="switch">
+              <input
+                type="checkbox"
+                class="form__input form_input--outdoors hidden"
+              />
+              <span class="slider"></span>
+            </label>
           </div>
-          <button class="form__btn hidden">OK</button>
+          <button
+            class="form__btn col-span-2 mx-auto rounded-md bg-gray-300 px-4 py-2"
+          >
+            Create
+          </button>
         </form>
       </ul>
     </div>
