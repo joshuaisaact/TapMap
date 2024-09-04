@@ -6,11 +6,20 @@
   font-size: 62.5%;
 } */
 
-.custom-popup .leaflet-popup-content-wrapper {
+.Pub-popup .leaflet-popup-content-wrapper {
   @apply rounded border-l-4 border-solid border-green-800 bg-gray-600 pl-2 text-2xl text-gray-200;
 }
 
-.custom-popup .leaflet-popup-tip {
+.Pub-popup,
+.Brewery-popup .leaflet-popup-tip {
+  @apply bg-gray-600;
+}
+
+.Brewery-popup .leaflet-popup-content-wrapper {
+  @apply rounded border-l-4 border-solid border-red-800 bg-gray-600 pl-2 text-2xl text-gray-200;
+}
+
+.Pub-popup .leaflet-popup-tip {
   @apply bg-gray-600;
 }
 

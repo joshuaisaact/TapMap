@@ -17,12 +17,14 @@ class Tap {
 }
 
 class Pub extends Tap {
+  type = 'Pub';
   constructor(coords, price, food, pets) {
     super(coords, price, food);
     this.pets = pets;
   }
 }
 class Brewery extends Tap {
+  type = 'Brewery';
   constructor(coords, price, food, outdoors) {
     super(coords, price, food);
     this.outdoors = outdoors;
@@ -45,6 +47,7 @@ const inputOutdoors = document.querySelector('.form_input--outdoors');
 class App {
   #map;
   #mapEvent;
+  #taps = [];
   constructor() {
     this._getPosition();
 
@@ -94,16 +97,37 @@ class App {
     e.preventDefault();
 
     // Get data from form
+    const type = inputType.value;
+    const price = inputPrice.value;
+    const food = inputFood.checked;
+    const { lat, lng } = this.#mapEvent.latlng;
+    let tap;
 
     // Check if data is valid
 
     // If pub, create pub object
+    if (type === 'pub') {
+      const pets = inputPets.checked;
+      // if (pets !== INSERTOPTIONSFORPETSHERE) return alert('Input is invalid!')
+
+      tap = new Pub([lat, lng], price, food, pets)
+
+    }
 
     // If brewery, create brewery object
+    if (type === 'brewery') {
+      const outdoors = inputOutdoors.checked;
+      tap = new Brewery([lat, lng], price, food, outdoors);
+    }
+
+
 
     // Add new object to Tap array
+    this.#taps.push(tap);
+    console.log(tap);
 
     // Render Tap on map as a marker
+    this._renderTapMarker(tap)
 
     // Render Tap on list
 
@@ -114,9 +138,10 @@ class App {
     inputOutdoors.value = ' ';
 
     // Display Marker
-    const { lat, lng } = this.#mapEvent.latlng;
 
-    L.marker([lat, lng])
+  }
+  _renderTapMarker(tap) {
+    L.marker(tap.coords)
       .addTo(this.#map)
       .bindPopup(
         L.popup({
@@ -124,11 +149,15 @@ class App {
           minWidth: 100,
           autoClose: false,
           closeOnClick: false,
-          className: 'custom-popup',
+          className: `${tap.type}-popup`,
         }),
       )
-      .setPopupContent('Pub')
+      .setPopupContent(tap.type)
       .openPopup();
+  }
+
+  _renderTap(tap) {
+
   }
 }
 

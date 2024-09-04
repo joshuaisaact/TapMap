@@ -12,6 +12,7 @@
   <body
     class="flex h-screen overscroll-y-none bg-white p-10 font-sans font-normal leading-relaxed"
   >
+    <div id="map" class="h-full flex-1 bg-gray-300"></div>
     <div
       class="sidebar flex basis-[40rem] flex-col bg-gray-600 pb-16 pl-20 pr-20 pt-12"
     >
@@ -41,10 +42,14 @@
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
               >Price range</label
             >
-            <input
+            <select
               class="form__input form_input--price font-inherit text-m w-full rounded-md border-none px-4 py-1"
               placeholder="£"
-            />
+            >
+              <option value="Budget">Budget</option>
+              <option value="Medium">Medium</option>
+              <option value="Expensive">Expensive</option>
+            </select>
           </div>
           <div class="form__row flex items-center">
             <label
@@ -52,6 +57,7 @@
               >Food</label
             >
             <input
+              type="checkbox"
               class="form__input form_input--food font-inherit text-m w-full rounded-md border-none px-4 py-1"
               placeholder="No food"
             />
@@ -59,28 +65,26 @@
           <div class="form__row flex items-center">
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Pet friendly</label
+              >Dog friendly</label
             >
             <input
+              type="checkbox"
               class="form__input form_input--pets font-inherit text-m w-full rounded-md border-none px-4 py-1"
-              placeholder="No dogs"
             />
           </div>
           <div class="form__row form__row--hidden flex items-center">
             <label
               class="form__label text-m flex-shrink-0 flex-grow-0 basis-1/2 font-semibold"
-              >Outdoor</label
+              >Outdoor Seats</label
             >
             <input
+              type="checkbox"
               class="form__input form_input--outdoors font-inherit text-m w-full rounded-md border-none px-4 py-1"
-              placeholder="No outdoor seating"
             />
           </div>
           <button class="form__btn hidden">OK</button>
         </form>
       </ul>
     </div>
-
-    <div id="map" class="h-full flex-1 bg-gray-300"></div>
   </body>
 </html>
